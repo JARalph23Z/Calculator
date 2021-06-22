@@ -22,6 +22,6 @@ Team Leader: Ralph Christian Palmaira // JARalph23Z
 
 Team Members: 
 - Brixson Domantay // brxzn
-- Ray Dalipe // torurae
+- Ray Dalipe // Torurae
 - Hans Tulayan // Meriodasu007
 - Saile Galilea // 
