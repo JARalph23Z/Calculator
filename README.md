@@ -24,4 +24,4 @@ Team Members:
 - Brixson Domantay // brxzn
 - Ray Dalipe // Torurae
 - Hans Tulayan // Meriodasu007
-- Saile Galilea // 
+- Saile Galilea // Kkaepsong
