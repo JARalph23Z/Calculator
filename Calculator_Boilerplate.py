@@ -32,10 +32,12 @@ class Operations:
 class Calculator:
 		
 	def __init__(self):
+		# basically diri guro i handle ang PEMDAS
 		pass
 		
 
 	def calculate(self, o: Operations):
 		# kunware 1 + 2 - 3 + 4, dapat mag go through the class Operations siya via 1 + 2 = 3, then 3 - 3 = 0, then 0 + 4 = 4.
 		# if makaya mo, kung may parentheses like 1 + 4 * 3 * (4 + 1), dapat 4 + 1 = 5, then 4 * 3 = 12, then 12 * 5 = 60, then 1 + 60 = 61.
-		# basically diri guro i handle ang PEMDAS
+		
+		return
