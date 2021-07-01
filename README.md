@@ -13,10 +13,24 @@
 
 ### Some other advanced goals for this project:
 - A unit converter (metric and English system)
+- A currency converter
 - Automatic solver (i.e. radius & circumference of circle, third side of right triangle, etc.)
 - More features to come!
 
-### Team
+# How to Set Up
+Please install the necessary dependencies first:
+```
+pip install -r requirements.txt
+```
+Then clone or download the repositiory and run:
+```
+python main.py
+```
+### Calculator logic is located in `calculator.py`
+### UI code is located in `ui.py`
+### You can initiate some tests with `calculator_test.py` and `ui_test.py`
+
+# Team
 
 Team Leader: Ralph Christian Palmaira // JARalph23Z
 
@@ -25,3 +39,4 @@ Team Members:
 - Ray Dalipe // Torurae
 - Hans Tulayan // Meriodasu007
 - Saile Galilea // Kkaepsong
+
