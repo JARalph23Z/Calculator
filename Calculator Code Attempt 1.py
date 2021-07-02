@@ -1,23 +1,20 @@
 import math
 import operator
-from pyparsing import (
-	Literal,
-	Word,
-	Group,
-	Forward,
-	alphas,
-	alphanums,
-	Regex,
-	ParseException,
-	CaselessKeyword,
-	Suppress,
-	delimitedList,
-)
+from pyparsing import *
 
 exprStack = []
 
 def push_first(toks):
 	exprStack.append(toks[0])
+
+
+def comb(x,y):
+	result = math.factorial(x) /  (math.factorial(x - y) * math.factorial(y))
+	return int(result)
+
+def perm(x,y):
+	result = math.factorial(x) / math.factorial(x - y)
+	return int(result)
 
 def push_unary_minus(toks):
 	for t in toks:
@@ -78,25 +75,30 @@ opn = {
 }
 
 fn = {
-	"sin": math.sin,
+	"sin": math.sin, # sin(60)
 	"cos": math.cos,
 	"tan": math.tan,
-	"exp": math.exp,
-	"asin": math.asin,
-	"acos": math.acos,
+	"exp": math.exp, # skip
+	"asin": math.asin, # sin(between -1 and 1 lang ang values)
+	"acos": math.acos, 
 	"atan": math.atan,
-	"sinh": math.sinh,
+	"sinh": math.sinh, # sinh(60)
 	"cosh": math.cosh,
 	"tanh": math.tanh,
-	"fmod": math.fmod,
-	"sqrt": math.sqrt,
-	"root": lambda a, b: a ** (1/(b)),
-	"fact": math.factorial,
-	"abs": abs,
-	"trunc": int,
-	"round": round,
-	"sgn": lambda a: -1 if a < -epsilon else 1 if a > epsilon else 0,
-	"multiply": lambda a, b: a * b,
+	"mod": math.fmod, # mod(30, 8) = 6, mod(10, 3) = 1
+	"sqrt": math.sqrt, # sqrt(4) = 2
+	"root": lambda a, b: a ** (1/(b)), # root(27, 3) = 3, root(125, 3) = 5, root(625, 4) = 5
+	"fact": math.factorial, # fact(3) = 3*2*1 = 6
+	"logx": math.log, # log(100, 10) = 2
+	"log10": math.log10, # log(100, 10) = 2
+	"ln": math.log, # ln(2)
+	"P": perm,
+	"C": comb,
+	"abs": abs, # abs(-1) = 1, abs(10 * (-2)) = 20
+	"tnc": int, # tnc(25.92) = 25, tnc(5 * 2.1) = 10
+	"rnd": round, # rnd(25.92) = 26 , rnd(25.92, 1) = 25.9, rnd(25.945, 2) = 25.95
+	"sgn": lambda a: -1 if a < -epsilon else 1 if a > epsilon else 0, # skip
+	"multiply": lambda a, b: a * b, # skip
 	}
 
 
@@ -114,7 +116,7 @@ def evaluate_stacks(s):
 		except:
 			return "ERROR"
 	elif op == "PI":
-		return math.pi
+		return round(math.pi, 2)
 	elif op == "E":
 		return math.e
 	elif op in fn:
@@ -132,16 +134,14 @@ def evaluate_stacks(s):
 			return float(op)
 
 def Calculate(s):
-	exprStack[:] = []
-	results = BNF().parseString(s, parseAll = True)
-	val = evaluate_stacks(exprStack[:])
-	return val
+	
+	try:
+		exprStack[:] = []
+		results = BNF().parseString(s, parseAll = True)
+		val = evaluate_stacks(exprStack[:])
+		return val
 
-s = "1+1/0"
-'''
-exprStack[:] = []
-results = BNF().parseString(s, parseAll = True)
-val = evaluate_stacks(exprStack[:])			
-print(val)
-'''
-print(Calculate(s))
+	except:
+		return 'ERROR'
+
+print(Calculate('C(10,3)'))
