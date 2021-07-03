@@ -4,17 +4,16 @@ from pyparsing import *
 
 exprStack = []
 
-def push_first(toks):
-	exprStack.append(toks[0])
-
-
-def comb(x,y):
-	result = math.factorial(x) /  (math.factorial(x - y) * math.factorial(y))
+def comb(x, y):
+	result = math.factorial(x) / (math.factorial(y) * math.factorial(x - y))
 	return int(result)
 
-def perm(x,y):
+def perm(x, y):
 	result = math.factorial(x) / math.factorial(x - y)
 	return int(result)
+
+def push_first(toks):
+	exprStack.append(toks[0])
 
 def push_unary_minus(toks):
 	for t in toks:
@@ -64,8 +63,6 @@ def BNF():
 
 	return bnf
 
-epsilon = 1e-12
-
 opn = {
 	"+": operator.add,
 	"-": operator.sub,
@@ -75,30 +72,27 @@ opn = {
 }
 
 fn = {
-	"sin": math.sin, # sin(60)
+	"sin": math.sin,
 	"cos": math.cos,
 	"tan": math.tan,
-	"exp": math.exp, # skip
-	"asin": math.asin, # sin(between -1 and 1 lang ang values)
+	"asin": math.asin,
 	"acos": math.acos, 
 	"atan": math.atan,
-	"sinh": math.sinh, # sinh(60)
+	"sinh": math.sinh,
 	"cosh": math.cosh,
 	"tanh": math.tanh,
-	"mod": math.fmod, # mod(30, 8) = 6, mod(10, 3) = 1
-	"sqrt": math.sqrt, # sqrt(4) = 2
-	"root": lambda a, b: a ** (1/(b)), # root(27, 3) = 3, root(125, 3) = 5, root(625, 4) = 5
-	"fact": math.factorial, # fact(3) = 3*2*1 = 6
-	"logx": math.log, # log(100, 10) = 2
-	"log10": math.log10, # log(100, 10) = 2
-	"ln": math.log, # ln(2)
+	"mod": math.fmod,
+	"sqrt": math.sqrt,
+	"root": lambda a, b: a ** (1/(b)),
+	"fact": math.factorial,
+	"logx": math.log,
+	"log10": math.log10,
+	"ln": math.log,
 	"P": perm,
 	"C": comb,
-	"abs": abs, # abs(-1) = 1, abs(10 * (-2)) = 20
-	"tnc": int, # tnc(25.92) = 25, tnc(5 * 2.1) = 10
-	"rnd": round, # rnd(25.92) = 26 , rnd(25.92, 1) = 25.9, rnd(25.945, 2) = 25.95
-	"sgn": lambda a: -1 if a < -epsilon else 1 if a > epsilon else 0, # skip
-	"multiply": lambda a, b: a * b, # skip
+	"abs": abs,
+	"tnc": int,
+	"rnd": round,
 	}
 
 
@@ -124,7 +118,7 @@ def evaluate_stacks(s):
 			args = reversed([evaluate_stacks(s) for _ in range(num_args)])
 			return fn[op](*args)
 		except ValueError:
-			return "An error occured, please make sure you follow the guidelines."
+			return "ERROR"
 	elif op[0].isalpha():
 		raise Exception("Invalid Identifier '%s'" % op)
 	else:
@@ -139,9 +133,10 @@ def Calculate(s):
 		exprStack[:] = []
 		results = BNF().parseString(s, parseAll = True)
 		val = evaluate_stacks(exprStack[:])
-		return val
+		if str(val)[-2:] == '.0':
+			return int(str(val)[:-2])
+		else:
+			return val
 
 	except:
 		return 'ERROR'
-
-print(Calculate('C(10,3)'))
