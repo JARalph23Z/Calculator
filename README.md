@@ -1,6 +1,10 @@
 # Calculator
 ## Project Requirement for CCC 
 
+- **Written with Python 3.9 (Can work with 3.7.9)**
+- **Uses PyQt6 as the GUI Framework**
+- **Uses Pyparsing for the calculator logic**
+
 ### This project has the following features.
 
 - Numeric keypad (0-9) with decimal point
@@ -13,14 +17,17 @@
 
 # How to Set Up
 
-Please install the necessary dependencies first:
+1. Clone or download the repository.
+2. Install the necessary dependencies:
 ```
 pip install -r requirements.txt
 ```
-Then clone or download the repositiory and run:
+3. Run the program:
 ```
 python main.py
 ```
+4. Make sure all the `.py` files are located in the same folder as well as the `resources` folder, as the UI uses files that are in the `resources` folder.
+
 ### Calculator logic is located in `calculator.py`
 ### UI code is located in `ui.py`
 ### You can initiate some tests for the calculator logic with `test.py`
