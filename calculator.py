@@ -4,6 +4,14 @@ from pyparsing import *
 
 exprStack = []
 
+def comb(x, y):
+	result = math.factorial(x) / (math.factorial(y) * math.factorial(x - y))
+	return int(result)
+
+def perm(x, y):
+	result = math.factorial(x) / math.factorial(x - y)
+	return int(result)
+
 def push_first(toks):
 	exprStack.append(toks[0])
 
@@ -55,8 +63,6 @@ def BNF():
 
 	return bnf
 
-epsilon = 1e-12
-
 opn = {
 	"+": operator.add,
 	"-": operator.sub,
@@ -69,9 +75,8 @@ fn = {
 	"sin": math.sin,
 	"cos": math.cos,
 	"tan": math.tan,
-	"exp": math.exp,
 	"asin": math.asin,
-	"acos": math.acos,
+	"acos": math.acos, 
 	"atan": math.atan,
 	"sinh": math.sinh,
 	"cosh": math.cosh,
@@ -83,11 +88,11 @@ fn = {
 	"logx": math.log,
 	"log10": math.log10,
 	"ln": math.log,
+	"P": perm,
+	"C": comb,
 	"abs": abs,
 	"tnc": int,
 	"rnd": round,
-	"sgn": lambda a: -1 if a < -epsilon else 1 if a > epsilon else 0,
-	"multiply": lambda a, b: a * b,
 	}
 
 
@@ -105,7 +110,7 @@ def evaluate_stacks(s):
 		except:
 			return "ERROR"
 	elif op == "PI":
-		return math.pi
+		return round(math.pi, 2)
 	elif op == "E":
 		return math.e
 	elif op in fn:
@@ -113,7 +118,7 @@ def evaluate_stacks(s):
 			args = reversed([evaluate_stacks(s) for _ in range(num_args)])
 			return fn[op](*args)
 		except ValueError:
-			return "An error occured, please make sure you follow the guidelines."
+			return "ERROR"
 	elif op[0].isalpha():
 		raise Exception("Invalid Identifier '%s'" % op)
 	else:
@@ -128,7 +133,10 @@ def Calculate(s):
 		exprStack[:] = []
 		results = BNF().parseString(s, parseAll = True)
 		val = evaluate_stacks(exprStack[:])
-		return val
+		if str(val)[-2:] == '.0':
+			return int(str(val)[:-2])
+		else:
+			return val
 
 	except:
 		return 'ERROR'
