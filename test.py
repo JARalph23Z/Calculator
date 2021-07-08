@@ -40,7 +40,7 @@ class Test(unittest.TestCase):
 
 	def test__OO__error_division(self):
 		Solve = "1+2+3+4+5+6/0"
-		self.assertEqual(Calculate(Solve), "ERROR")
+		self.assertEqual(Calculate(Solve), "MATH ERROR")
 
 	def test__OO__combined_3(self):
 		Solve = "(5*3)/5*9+100"
