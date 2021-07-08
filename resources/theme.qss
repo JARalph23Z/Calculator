@@ -1,0 +1,373 @@
+QMainWindow
+{
+	background-color: #f8f0e3;
+}
+
+/*-----QWidget-----*/
+QWidget
+{
+	background-color: #f8f0e3;
+	color: #000000;
+	border-color: #000000;
+
+}
+
+/*-----QMenuBar-----*/
+QMenuBar
+{
+	background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(61, 61, 61, 255),stop:0.514423 rgba(89, 89, 89, 255),stop:1 rgba(98, 98, 98, 255));
+	color: #cccccc;
+	border-color: #000000;
+
+}
+
+
+QMenuBar::item
+{
+	background-color: transparent;
+
+}
+
+
+QMenuBar::item:selected
+{
+	background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(139, 139, 139, 255),stop:0.514423 rgba(89, 89, 89, 255),stop:1 rgba(152, 152, 152, 255));
+	color: #fff;
+
+}
+
+
+QMenuBar::item:pressed
+{
+	background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(39, 39, 39, 255),stop:0.514423 rgba(89, 89, 89, 255),stop:1 rgba(52, 52, 52, 255));
+	border: 1px solid #5ab8a0;
+	margin-bottom: -1px;
+	padding-bottom: 1px;
+
+}
+
+
+/*-----QMenu-----*/
+QMenu
+{
+	background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(61, 61, 61, 255),stop:0.514423 rgba(89, 89, 89, 255),stop:1 rgba(78, 78, 78, 255));
+	border: 1px solid;
+	color: lightgray;
+
+}
+
+
+QMenu::separator
+{
+	height: 1px;
+	background-color: #000;
+	color: #ffffff;
+	padding-left: 4px;
+	margin-left: 10px;
+	margin-right: 5px;
+
+}
+
+
+QMenu::item
+{
+	min-width : 150px;
+	padding: 3px 20px 3px 20px;
+
+}
+
+
+QMenu::item:selected
+{
+	background-color: #cdceb1;
+	color: #000;
+
+}
+
+/*-----QLabel------*/
+QLabel#DateTime
+{
+	background-color: #ed8b06;
+	border-color: #ed8b06;
+	border-width: 5px;
+	margin: 5px
+
+}
+
+/*-----QLineEdit-----*/
+QLineEdit
+{
+	background-color: #d3d3d3;
+	color: #000000;
+	border-style: inset;
+	border-width: 10px;
+	
+	border-color: #ed8b06;
+	
+	font-family: "Cambria Math";
+	font-size: 21px;
+
+}
+
+/*-----QStatusBar-----*/
+QStatusBar
+{
+	height: 35px;
+	font-family: "Century Gothic";
+	font-size: 14;
+	background-color: #ed8b06;
+	border-style: inset;
+	border-color: #7a5011;
+
+}
+
+/*-----QPushButton-----*/
+QPushButton
+{
+	background-color: #ed8b06;
+	color: #ffffff;
+	margin: 3px;
+	font-size: 19px;
+	font-family: "Cambria Math";
+
+}
+
+QPushButton#ANS
+{
+	background-color: #d22501;
+}
+
+QPushButton#DEL
+{
+	background-color: #d22501;
+}
+
+QPushButton#AC
+{
+	background-color: #d22501;
+}
+
+QPushButton#LPAR
+{
+	background-color: #d22501;
+}
+
+QPushButton#RPAR
+{
+	background-color: #d22501;
+}
+
+QPushButton#7
+{
+	background-color: #91a61d;
+}
+
+QPushButton#8
+{
+	background-color: #91a61d;
+}
+
+QPushButton#9
+{
+	background-color: #91a61d;
+}
+
+QPushButton#DIVIDE
+{
+	background-color: #91a61d;
+}
+
+QPushButton#SQR
+{
+	background-color: #91a61d;
+}
+
+QPushButton#4
+{
+	background-color: #f19f00;
+}
+
+QPushButton#5
+{
+	background-color: #f19f00;
+}
+
+QPushButton#6
+{
+	background-color: #f19f00;
+}
+
+QPushButton#MULTIPLY
+{
+	background-color: #f19f00;
+}
+
+QPushButton#SQRT
+{
+	background-color: #f19f00;
+}
+
+QPushButton#1
+{
+	background-color: #88472e;
+}
+
+QPushButton#2
+{
+	background-color: #88472e;
+}
+
+QPushButton#3
+{
+	background-color: #88472e;
+}
+
+QPushButton#-
+{
+	background-color: #88472e;
+}
+
+QPushButton#EQUAL
+{
+	background-color: #88472e;
+}
+
+QPushButton#0
+{
+	background-color: #88472e;
+}
+
+QPushButton#DOT
+{
+	background-color: #88472e;
+}
+
+QPushButton#PLUS
+{
+	background-color: #88472e;
+}
+
+QPushButton#rnd
+{
+	background-color: #d22501;
+}
+
+QPushButton#tnc
+{
+	background-color: #d22501;
+}
+
+QPushButton#abs
+{
+	background-color: #d22501;
+}
+
+QPushButton#P
+{
+	background-color: #d22501;
+}
+
+QPushButton#C
+{
+	background-color: #d22501;
+}
+
+QPushButton#RAISE
+{
+	background-color: #91a61d;
+}
+
+QPushButton#sin
+{
+	background-color: #91a61d;
+}
+
+QPushButton#sinh
+{
+	background-color: #91a61d;
+}
+
+QPushButton#asin
+{
+	background-color: #91a61d;
+}
+
+QPushButton#ln
+{
+	background-color: #91a61d;
+}
+
+QPushButton#root
+{
+	background-color: #f19f00;
+}
+
+QPushButton#cos
+{
+	background-color: #f19f00;
+}
+
+QPushButton#cosh
+{
+	background-color: #f19f00;
+}
+
+QPushButton#acos
+{
+	background-color: #f19f00;
+}
+
+QPushButton#logx
+{
+	background-color: #f19f00;
+}
+
+QPushButton#pi
+{
+	background-color: #88472e;
+}
+
+QPushButton#tan
+{
+	background-color: #88472e;
+}
+
+QPushButton#tanh
+{
+	background-color: #88472e;
+}
+
+QPushButton#atan
+{
+	background-color: #88472e;
+}
+
+QPushButton#log10
+{
+	background-color: #88472e;
+}
+
+QPushButton#fact
+{
+	background-color: #88472e;
+}
+
+QPushButton#E
+{
+	background-color: #88472e;
+}
+
+QPushButton#mod
+{
+	background-color: #88472e;
+}
+
+QPushButton#COMMA
+{
+	background-color: #88472e;
+}
+
+QPushButton#X10
+{
+	background-color: #88472e;
+}
