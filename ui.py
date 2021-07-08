@@ -424,6 +424,7 @@ class About(object):
 		Form.setWindowTitle('About')
 		Form.setWindowIcon(QIcon('./resources/window_icon.png'))
 		Form.setFixedSize(295, 160)
+		#Form.setWindowFlags(Qt.WindowStaysOnTopHint)
 
 		self.label = QLabel(Form)
 		self.label.setGeometry(QRect(75, 30, 121, 31))
@@ -465,7 +466,7 @@ class About(object):
 		font.setPointSize(11)
 
 		self.label_4.setFont(font)
-		self.label_4.setText("<a href=\"https://github.com/JARalph23Z/Calculator\">GitHub Repository</a>")
+		self.label_4.setText('<a href=\"https://github.com/JARalph23Z/Calculator\">GitHub Repository</a>')
 		self.label_4.setOpenExternalLinks(True)
 
 		self.label_5 = QLabel(Form)
@@ -805,10 +806,12 @@ class Menu:
 		# Instructions
 		self.a_Instructions = QAction(self.menuBar)
 		self.a_Instructions.setText('Instructions')
+		self.a_Instructions.setShortcut('Ctrl+3')
 
 		# About
 		self.a_About = QAction(self.menuBar)
 		self.a_About.setText('About')
+		self.a_About.setShortcut('Ctrl+4')
 		
 		## Sub Buttons in Sub Menu "Button Sound"
 
@@ -818,6 +821,13 @@ class Menu:
 			action.setData(sound + '.mp3')
 			self.m_m_ButtonSound.addAction(action)
 			self.soundGroup.addAction(action)
+
+		## Dark Theme
+		self.a_Dark = QAction(self.menuBar)
+		self.a_Dark.setText('Dark Theme')
+		self.a_Dark.setCheckable(True)
+		self.a_Dark.setChecked(False)
+		self.a_Dark.setShortcut('Ctrl+2')
 
 		## Set Up the Order of Buttons
 
@@ -830,7 +840,9 @@ class Menu:
 		self.m_SelectCalculator.addAction(self.a_ScientificCalculator)
 
 		# Sub Buttons = Preferences
+		self.m_Preferences.addAction(self.a_Dark)
 		self.m_Preferences.addAction(self.m_m_ButtonSound.menuAction())
+
 
 		# Sub Buttons = Help
 		self._Help.addAction(self.a_Instructions)
@@ -841,6 +853,23 @@ class Menu:
 		self.a_About.triggered.connect(self.action_About)
 		self.a_Instructions.triggered.connect(self.action_Instructions)
 		self.a_ScientificCalculator.triggered.connect(self.action_ScientificCalculator)
+		self.a_Dark.triggered.connect(self.action_Dark)
+
+	def action_Dark(self, checked):
+
+		if checked:
+			
+			with open('./resources/theme_2.qss', 'r') as f:
+
+				style = f.read()
+				app.setStyleSheet(style)
+
+		else:
+
+			with open('./resources/theme.qss', 'r') as f:
+
+				style = f.read()
+				app.setStyleSheet(style) 
 
 	def action_About(self):
 
@@ -900,6 +929,13 @@ class StatusBar:
 		self.view.sci_buttons['asin('].setStatusTip('Number must only be between 1 and -1: asin(0.5)')
 		self.view.sci_buttons['acos('].setStatusTip('Number must only be between 1 and -1: acos(0.5)')
 		self.view.sci_buttons['atan('].setStatusTip('Number must only be between 1 and -1: atan(0.5)')
+
+		self.view.sci_buttons['sin('].setStatusTip('Trigonometric functions are in radians, not degrees.')
+		self.view.sci_buttons['cos('].setStatusTip('Trigonometric functions are in radians, not degrees.')
+		self.view.sci_buttons['tan('].setStatusTip('Trigonometric functions are in radians, not degrees.')
+		self.view.sci_buttons['sinh('].setStatusTip('Trigonometric functions are in radians, not degrees.')
+		self.view.sci_buttons['cosh('].setStatusTip('Trigonometric functions are in radians, not degrees.')
+		self.view.sci_buttons['tanh('].setStatusTip('Trigonometric functions are in radians, not degrees.')
 
 	def date_and_time(self):
 
@@ -964,7 +1000,12 @@ class Controller:
 		if self.view.equateLineText() == 'ERROR':
 			self.view.clear_equateLineText()
 
-		expression = self.view.equateLineText() + sub_exp
+		text = self.view.equateLineText()
+		text = list(str(text))
+		pos = self.view.equateLine.cursorPosition()
+		text.insert(pos, sub_exp)
+		expression = ''.join(text)
+
 		self.view.set_equateLineText(expression)
 
 	def calculateResult(self):
@@ -982,6 +1023,7 @@ class Controller:
 			if btnText == '=':
 				self.view.basic_buttons['='].clicked.connect(self.calculateResult)
 				self.view.basic_buttons['='].clicked.connect(self.handleStore)
+				self.view.basic_buttons['='].clicked.connect(self.playsound)
 
 			elif btnText == 'AC':
 				self.view.basic_buttons['AC'].clicked.connect(self.view.clear_equateLineText)
@@ -1006,6 +1048,7 @@ class Controller:
 			if btnText == '=':
 				self.view.sci_buttons['='].clicked.connect(self.calculateResult)
 				self.view.sci_buttons['='].clicked.connect(self.handleStore)
+				self.view.sci_buttons['='].clicked.connect(self.playsound)
 
 			elif btnText == 'AC':
 				self.view.sci_buttons['AC'].clicked.connect(self.view.clear_equateLineText)
@@ -1027,6 +1070,27 @@ class Controller:
 
 		self.view.equateLine.returnPressed.connect(self.calculateResult)
 
+
+
+app = QApplication(sys.argv)
+
 def background():
 	while True:
 		playsound('./resources/background.mp3')
+
+def main():
+
+	run = CalculatorUI()
+	Controller(run)
+	m = Menu(run)
+	s = StatusBar(run)
+
+	Thread(target = background, daemon = True).start()
+
+	run.show()
+
+	with open('./resources/theme.qss', 'r') as f:
+
+		style = f.read()
+		app.setStyleSheet(style)
+	sys.exit(app.exec())
