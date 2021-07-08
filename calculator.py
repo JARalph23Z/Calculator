@@ -107,8 +107,11 @@ def evaluate_stacks(s):
 			op2 = evaluate_stacks(s)
 			op1 = evaluate_stacks(s)
 			return opn[op](op1, op2)
+		except ZeroDivisionError:
+			return 'ZERO DIVISION ERROR'
+			
 		except:
-			return "ERROR"
+			return "MATH ERROR"
 	elif op == "PI":
 		return round(math.pi, 2)
 	elif op == "E":
@@ -138,5 +141,8 @@ def Calculate(s):
 		else:
 			return val
 
+	except ZeroDivisionError:
+		return 'ZERO DIVISION ERROR'
+
 	except:
-		return 'ERROR'
+		return 'SYNTAX ERROR'
