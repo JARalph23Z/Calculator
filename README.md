@@ -99,9 +99,9 @@ python main.py
 
 # Disclaimer
 ```
-All the codes within this repository are either self-made or adapted from other repositories under the MIT License, which 
-allows for the distribution and alteration of such codes. If you wish, you can open an issue so we can address any problems 
-immediately. 
+All the codes within this repository are either self-made or adapted from other repositories under the MIT 
+License, which allows for the distribution and alteration of such codes. If you wish, you can open an issue 
+so we can address any problems immediately. 
 
 Thank you for your understanding.
 ```
