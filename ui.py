@@ -797,6 +797,7 @@ class Menu:
 		# Scientific Calculator
 		self.a_ScientificCalculator = QAction(self.menuBar)
 		self.a_ScientificCalculator.setText('Scientific Calculator')
+		self.a_ScientificCalculator.setStatusTip('Please wait patiently.')
 		self.a_ScientificCalculator.setCheckable(True)
 		self.a_ScientificCalculator.setChecked(False)
 		self.a_ScientificCalculator.setShortcut('Ctrl+1')
