@@ -1,6 +1,6 @@
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/) 
 
-[![LICENSE](https://img.shields.io/badge/license-MIT-lightgrey.svg)]
+![LICENSE](https://img.shields.io/badge/license-MIT-lightgrey.svg)
 
 # `Burgir Calculator`
 ## Introduction
