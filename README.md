@@ -19,7 +19,7 @@
 - Other necessary functions: `delete`, `clear all`, `ANS`, etc.
 
 **UI**:
-
+- **NEW!** Dark Theme
 - Can switch between the basic calculator layout to the scientific calculator layout.
 - A button press effect, which can be changed or disabled.
 - A subtle background music.
@@ -50,15 +50,19 @@ python main.py
 
 # Team
 
-Team Leader: Ralph Christian Palmaira // JARalph23Z
+Team Leader: Ralph Christian Palmaira // JARalph23Z - UI Coder
 
 Team Members: 
-- Brixson Domantay // brxzn
-- Ray Dalipe // Torurae
-- Hans Tulayan // Meriodasu007
-- Saile Galilea // Kkaepsong
+- Brixson Domantay // brxzn - Logic Coder
+- Ray Dalipe // Torurae - UI Designer & Documentation
+- Hans Tulayan // Meriodasu007 - Unit Tests
+- Saile Galilea // Kkaepsong - UI Designer & Documentation
 
 # Disclaimer
 ```
-All the codes within this repository are either self-made or adapted from other repositories under the MIT License, which allows for the distribution and alteration of such codes. If you wish, you can open an issue so we can address any problems immediately. Thank you for your understanding.
+All the codes within this repository are either self-made or adapted from other repositories under the MIT License, which 
+allows for the distribution and alteration of such codes. If you wish, you can open an issue so we can address any problems 
+immediately. 
+
+Thank you for your understanding.
 ```
