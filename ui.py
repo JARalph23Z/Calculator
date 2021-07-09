@@ -477,7 +477,7 @@ class About(object):
 		font.setPointSize(11)
 
 		self.label_5.setFont(font)
-		self.label_5.setText("<a href=\"https://github.com/JARalph23Z/Calculator\">Presentation</a>")
+		self.label_5.setText("<a href=\"https://drive.google.com/file/d/1ZNi9owFVY8JSgSVuVaDnUNbKqGaqAfF9/view?usp=sharing\">Presentation</a>")
 		self.label_5.setOpenExternalLinks(True)
 
 		self.label_6 = QLabel(Form)
@@ -489,7 +489,7 @@ class About(object):
 
 		self.label_6.setFont(font)
 		self.label_6.setAlignment(Qt.AlignmentFlag.AlignCenter)
-		self.label_6.setText("Burgir! Burgir! Burgir! Burgir! Burgir!")
+		self.label_6.setText("| Burgir Calculator ™ |")
 
 class Instructions(object):
 
