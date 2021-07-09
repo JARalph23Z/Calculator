@@ -94,7 +94,7 @@ python main.py
 | **[Ralph Palmaira](https://github.com/JARalph23Z)**| Team Leader / UI Coder         |
 | **[Ray Dalipe](https://github.com/Torurae)**      | UI Designer / Documentation |
 | **[Brixson Domantay](https://github.com/brxzn)**  | Logic Coder |
-| **[Hans Tulayan](https://github.com/Meriodasu007)**        | Unit Tests                  |
+| **[Hans Tulayan](https://github.com/Meriodasu007)**        | Test File Coder                 |
 | **[Saile Galilea](https://github.com/Kkaepsong)** | UI Designer / Documentation            |
 
 # Disclaimer
